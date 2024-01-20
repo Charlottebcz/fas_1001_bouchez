@@ -1,0 +1,16 @@
+---
+title: "travail de session"
+author: "Charlotte Bouchez"
+format: pdf
+editor: visual
+---
+
+# Introduction
+
+## Problématique de recherche
+
+## Données et méthodes
+
+## Résultats
+
+# Conclusion
