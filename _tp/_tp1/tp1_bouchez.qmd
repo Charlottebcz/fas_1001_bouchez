@@ -6,23 +6,38 @@ editor: visual
 date: 2024-01-22
 ---
 
-## Quarto
+## Explications des commandes : 
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+##### Cette commande change le repertoire courant dans le terminal pour se rendre au sous dossier fas_1001  
 
-## Running Code
+![](images/cd_chemin.png)
 
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+![]()
 
-```{r}
-1 + 1
-```
+##### La commande git checkout sert a passer d'une branche a une autre. Ici, nous selectionnons notre branche.  
 
-You can add options to executable code like this
+![](images/git checkout .png)
 
-```{r}
-#| echo: false
-2 * 2
-```
+##### La commande git branch sert a apporter des modifications a notre branche sans modifier la  branche original
 
-The `echo: false` option disables the printing of code (only output is displayed).
+![](images/git branch .png)
+
+##### La  commande git add permet d'ajouter des modifications dans le repertoire de travail 
+
+##### ![](images/git add .png){width="508"}
+
+##### La commande git commit permet de sauvegarder le code et d'inscrire un message pour identifier la modification
+
+![](images/premier commit .png)
+
+##### La commande git add ici ette commande ajoute le fichier **`travail_de_session.qmd`** du dossier **`_travail_session`** à la zone de staging. 
+
+![](images/git add travail session .png)
+
+##### La commande git commit - m permet de sauvegarder ce code et ajouter un message a la modification 
+
+![](images/Capture d’écran, le 2024-01-21 à 16.06.51.png)
+
+##### Ces commandes ont servi a deposer les fichiers dans git hub 
+
+##### ![](images/git remote .png)
