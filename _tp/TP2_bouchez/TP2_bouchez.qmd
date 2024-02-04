@@ -1,0 +1,128 @@
+---
+title: "TP2_bouchez"
+format: html
+editor: visual
+---
+
+Option 1 :
+
+### 1 - Question de recherche et explications des données
+
+Dans ce travail, nous examinons l'impact de l'Indice de Développement Humain (IDH) sur la prévalence de la sous-nutrition au Niger sur la période de 2010 à 2020.
+
+Pour ce faire j'ai utilisé 2 bases de données observationelles. L'une d'elle appartient a la base de donnée du FAO (Food and Agriculture Organization of the United States). La FAO collecte des données sur l'alimentation, l'agriculture, et les ressources naturelles dans le but de guider les politiques et les investissements pour tous les pays du monde. C est grace au site de la FAO que j'ai pu collecter les données spécifiquemement sur le Niger et selectionner l'items "Prevalance of Undernourishment".
+
+Pour la deuxième base de donnée je me suis servi du site "ourworldindata" qui présente des données et des recherches empiriques sur les grandes questions mondiales. Grace a cette base de donnée j ai pu collecter des données de L'IDH pour tous les pays entre l'année 1990 et 2020.
+
+### 2- Données et méthodes
+
+-Description des données utilisées, les variables mobilisées et le croisement de variables.
+
+Dans le cadre de cette étude, nous avons utilisé un ensemble de données couvrant une période de dix ans, de 2010 à 2020, pour examiner la relation entre le développement humain et la prévalence de la sous-alimentation au Niger. Les variables mobilisées comprennent l'Indice de Développement Humain (IDH) et le pourcentage de la population sous-alimentée, tel que rapporté par les indicateurs internationaux.
+
+L'IDH est une mesure composite qui évalue trois dimensions fondamentales du développement humain : une vie longue et saine, l'éducation, et un niveau de vie décent. Dans notre ensemble de données, l'IDH est représenté par des valeurs continues allant de 0.338 à 0.406, où des nombres plus élevés indiquent un niveau de développement humain plus élevé.
+
+La prévalence de la sous-alimentation est utilisée comme indicateur de l'insécurité alimentaire, reflétant le pourcentage de la population ne disposant pas d'un accès suffisant à des aliments nutritifs et suffisants pour mener une vie saine et active. Les valeurs de cette variable varient de 10,9 % à 15,3 % de la population au cours de la période étudiée.
+
+Pour analyser l'interaction entre le développement humain et la sécurité alimentaire, nous avons croisé ces deux variables. Cette analyse vise à détecter des tendances et des corrélations potentielles entre l'amélioration de l'IDH et la réduction de la prévalence de la sous-alimentation. En explorant cette relation, nous espérons identifier des leviers potentiels pour des interventions politiques efficaces visant à améliorer la sécurité alimentaire dans un contexte de développement humain.
+
+-Explications des transformations de variables effectuées (nettoyage, uniformisation).
+
+Pour rendre nos analyses plus claires et precises le nettoyage et l'uniformisation de nos bases de données ont été necessaire.
+
+Afin de créer un objet **`data_clean_`** propre à notre analyse concernant les données sur la prévalence de la sous-nutrition au Niger a partir du dataframe `data`, nous avons utilisé une séquence d'opérations de la bibliothèque **`tidyverse`**. Dans un premier temps nous avons utilisé la fonction **`select`** du package **`tidyverse`** pour extraire uniquement les quatre variables pertinentes pour notre analyse: **`Area`**, **`Item`**, **`Year`**, et **`Value.`** Puis, pour cibler les données correspondant à la décennie qui nous intéresse, nous avons appliqué la fonction **`filter`** pour ne retenir que les observations allant de l'année 2010 à 2020 inclusivement. Cette chaine d'opération a aboutit a un nouvel object `data_clean` pret a l'analyse et la fusion.
+
+Dans un second temps nous avons nettoyer les données concernant l'IDH. Nous avons crée un vecteur nommé **`west_africa_countries`** qui contient une seule chaîne de caractères "Niger". Ce vecteur sera utilisé pour filtrer les données selon l'entité géographique. Puis la deuxième ligne commence la définition d'un nouveau dataframe **`dat2_clean`** qui sera créé en transformant **`dat2`** via une série d'opérations chaînées. Ensuite nous utilisons la commande `filter` pour ne selectionner que les lignes ou la colonne Entity correspond au vecteur "Niger ".
+
+Puis pour cibler les données correspondant aux année qui nous intéresse, nous avons appliqué la fonction `select` pour ne retenir que les observations allant de l'année 2010 à 2020 inclusivement. Puis na.omit() permet d'enlever les valeurs manquantes. Dat2_clean est miantenant pret a être analysé.
+
+Puis pour fusionner nos données `dat2_clean` et `data_clean`, nous avons utiliser `left_join` du package `dplyr.`
+
+Le paramètre by = "Year permet la jointure des deux bases de données. Le dataframe resultant se nomme de `result.`
+
+#### 2.1 Librairie
+
+```{r}
+install.packages("tidyr")
+library(tidyr)
+
+install.packages("tidyverse")
+library(tidyverse)
+install.packages("dyplr")
+library(dplyr)
+
+```
+
+#### 2.2 Data importation
+
+```{r}
+
+library(readr)
+human_development <- read_csv("human_development.csv")
+View(human_development)
+
+dat2 <- read.csv("~/Documents/FAS 1001/fas_1001/_tp/TP2_bouchez/human_development.csv", sep=";", stringsAsFactors = FALSE)
+
+
+fao_stat <- read_csv("fao_stat.csv")
+View(fao_stat)
+
+data <- read.csv("~/Documents/FAS 1001/fas_1001/_tp/TP2_bouchez/fao_stat.csv", sep=";", stringsAsFactors = FALSE)
+
+
+
+
+
+```
+
+#### 2.3 Nettoyage de donnée pour le fichier dat2 (human_development)
+
+```{r}
+west_africa_countries <- c("Niger") 
+dat2_clean <- dat2 %>%
+  filter(Entity %in% west_africa_countries) %>%
+  select(Entity, Year, Human.Development.Index)%>%
+   filter(Year >= 2010 & Year <= 2020) %>%
+  na.omit()
+
+```
+
+#### 2.4 Nettoyage de donnée pour le fichier data (fao_stat)
+
+```{r}
+data_clean_ <- data %>%
+  select(Area, Item, Year, Unit, Value) %>%
+  filter(Year >= 2010 & Year <= 2020) %>%
+
+
+
+```
+
+#### 2.5 Fusion de données : 
+
+```{r}
+result <- left_join(data_clean, dat2_clean, by = "Year")
+
+```
+
+#### 3: Description des résultats de l'analyse :
+
+Dans cette analyse nous avons choisi de nous interesser au cas du Niger en raison de son statut de pays en développement. Exemple particulièrement intéressant pour étudier les défis concernant la sous nutrition.
+
+La base de donnée sur la prévalance de la sous-nutrition nous indique le pourcentage de la population qui ne dispose pas d'une alimentation saine. Cette mesure montre un indicateur direct de l'insécurité alimentaire.
+
+Parralèlement, le niveau d'IDH relève le niveau de santé, d'éducation, niveau de vie. En étudiant cette indicateur cela permet de nous rendre compte des potentiels avancées en matière de progès socio-économiques et de bien être de la population. L'utilisation de ses deux bases de données nous permet de voir si les améliorations dans les domaines clés de dévelopement humain sont associés a une diminution de la sous-nutrition.
+
+Cette analyse longitudinale sur une période de 10 ans est essentielle afin de comprendre les dynamiques et les retards de développement sur la nutrition.
+
+A travers notre analyse, nous avons examiner les tendances de la prévalence de la sou-nutrition au Niger de 2010 à 2020 et la relation avec l'Indice de Développement Humain (IDH) pour cet même période. Les résultats révèlent une tendance générale à la baisse de la prévalence de la sous-nutrition, passant de 15,3 % en 2010 à 10,9 % en 2017. Parallèlement, l'IDH a connu une augmentation graduelle au cours de la décennie, passant de 0.338 à 0.401. Le graphique montre une courbe qui semble indiquer une relation négative entre l'IDH et la prévalence de la sous-nutrition ; c'est-à-dire que lorsque l'IDH augmente, la prévalence de la sous-nutrition tend à diminuer. Cette tendance est visible jusqu'en 2017, après quoi la prévalence de la sous-nutrition augmente légèrement, malgré une poursuite de l'amélioration de l'IDH. La region gris clair représente l'intervalle de confiance. Ces résultats illustrent une corrélation.
+
+```{r}
+ggplot(result, aes(x = Human.Development.Index, y = Value)) +
+  geom_smooth() +
+  theme_minimal() +
+  labs(title = "Relation entre la prévalence de la sous-nutrition et l'IDH au Niger",
+       x = "Sous-nutrition (en %)",
+       y = "Indice de Développement Humain")
+
+```
