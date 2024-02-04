@@ -12,27 +12,25 @@ date: 2024-01-22
 
 ![](images/cd_chemin.png)
 
-![]()
-
 ##### La commande git checkout sert a passer d'une branche a une autre. Ici, nous selectionnons notre branche.
 
-![](images/git%20checkout%20.png)
+![](images/git checkout.png)
 
 ##### La commande git branch sert a apporter des modifications a notre branche sans modifier la branche original
 
-![](images/git%20branch%20.png)
+![](images/git branch .png)
 
 ##### La commande git add permet d'ajouter des modifications dans le repertoire de travail
 
-##### ![](images/git%20add%20.png){width="508"}
+![](images/git add .png)
 
 ##### La commande git commit permet de sauvegarder le code et d'inscrire un message pour identifier la modification
 
-![](images/premier%20commit%20.png)
+![](images/premier commit .png)
 
 ##### La commande git add ici ajoute le fichier **`travail_de_session.qmd`** du dossier **`_travail_session`** à la zone de staging.
 
-![](images/git%20add%20travail%20session%20.png)
+![](images/photo2.png)
 
 ##### La commande git commit - m permet de sauvegarder ce code et ajouter un message a la modification
 
@@ -40,6 +38,6 @@ date: 2024-01-22
 
 ##### Les commandes remote et push ont servi a déposer les fichiers dans git hub avec toutes leurs modifications
 
-##### ![](images/git%20remote%20.png)
+![](images/git remote.png)
 
-![]()
+
