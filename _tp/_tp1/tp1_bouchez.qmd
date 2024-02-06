@@ -10,7 +10,7 @@ date: 2024-01-22
 
 ##### Cette commande change le repertoire courant dans le terminal pour se rendre au sous dossier fas_1001
 
-![](images/cd_chemin.png)
+![](images/cd_chemin.png) 
 
 ##### La commande git checkout sert a passer d'une branche a une autre. Ici, nous selectionnons notre branche.
 
@@ -18,7 +18,7 @@ date: 2024-01-22
 
 ##### La commande git branch sert a apporter des modifications a notre branche sans modifier la branche original
 
-![](images/git branch .png)
+![](images/git branch .png) 
 
 ##### La commande git add permet d'ajouter des modifications dans le repertoire de travail
 
@@ -28,7 +28,11 @@ date: 2024-01-22
 
 ![](images/premier commit .png)
 
+<<<<<<< HEAD
 ##### La commande git add ici ajoute le fichier **`travail_de_session.qmd`** du dossier **`_travail_session`** à la zone de staging.
+=======
+##### La commande git add ajoute le fichier **`travail_de_session.qmd`** du dossier **`_travail_session`** à la zone de staging. 
+>>>>>>> refs/remotes/origin/fas_1001_bouchez
 
 ![](images/photo2.png)
 
