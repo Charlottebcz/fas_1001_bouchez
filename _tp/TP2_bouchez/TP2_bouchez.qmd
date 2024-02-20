@@ -32,7 +32,7 @@ Pour rendre nos analyses plus claires et precises le nettoyage et l'uniformisati
 
 Afin de créer un objet **`data_clean_`** propre à notre analyse concernant les données sur la prévalence de la sous-nutrition au Niger a partir du dataframe `data`, nous avons utilisé une séquence d'opérations de la bibliothèque **`tidyverse`**. Dans un premier temps nous avons utilisé la fonction **`select`** du package **`tidyverse`** pour extraire uniquement les quatre variables pertinentes pour notre analyse: **`Area`**, **`Item`**, **`Year`**, et **`Value.`** Puis, pour cibler les données correspondant à la décennie qui nous intéresse, nous avons appliqué la fonction **`filter`** pour ne retenir que les observations allant de l'année 2010 à 2020 inclusivement. Cette chaine d'opération a aboutit a un nouvel object `data_clean` pret a l'analyse et la fusion.
 
-Dans un second temps nous avons nettoyer les données concernant l'IDH. Nous avons crée un vecteur nommé **`west_africa_countries`** qui contient une seule chaîne de caractères "Niger". Ce vecteur sera utilisé pour filtrer les données selon l'entité géographique. Puis la deuxième ligne commence la définition d'un nouveau dataframe **`dat2_clean`** qui sera créé en transformant **`dat2`** via une série d'opérations chaînées. Ensuite nous utilisons la commande `filter` pour ne selectionner que les lignes ou la colonne Entity correspond au vecteur "Niger ".
+Dans un second temps nous avons nettoyer les données concernant l'IDH. Nous avons crée un vecteur nommé **`west_africa_countries`** qui contient une seule chaîne de caractères "Niger". Ce vecteur sera utilisé pour filtrer les données selon l'entité géographique. Puis la deuxième ligne commence la définition d'un nouveau dataframe **`dat2_clean`** qui sera créé en transformant **`dat2`** via une série d'opérations chaînées. Ensuite nous utilisons la commande `filter` pour ne selectionner que les lignes ou la colonne Entity correspond au vecteur "Niger".
 
 Puis pour cibler les données correspondant aux année qui nous intéresse, nous avons appliqué la fonction `select` pour ne retenir que les observations allant de l'année 2010 à 2020 inclusivement. Puis na.omit() permet d'enlever les valeurs manquantes. Dat2_clean est miantenant pret a être analysé.
 
@@ -98,7 +98,7 @@ data_clean_ <- data %>%
 
 ```
 
-#### 2.5 Fusion de données : 
+#### 2.5 Fusion de données :
 
 ```{r}
 result <- left_join(data_clean, dat2_clean, by = "Year")

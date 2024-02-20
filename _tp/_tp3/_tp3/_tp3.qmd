@@ -1,0 +1,116 @@
+---
+title: "tp3"
+format: html
+editor: visual
+---
+
+-1- Intro
+
+Quels sont les enjeux les plus discutés lors des débats parlementaire le 28 janvier 2019 ?
+
+```{r}
+install.packages("tidyverse")
+install.packages("dyplr")
+```
+
+##### -data 
+
+```{r}
+library(readr)
+text_1 <- read.csv("~/Documents/FAS 1001/fas_1001/_tp/_tp3/text_1.csv", sep = ";")
+View(text_1)
+
+library(readr)
+lexicoder_merged <- read_csv("~/Documents/FAS 1001/fas_1001/_tp/_tp3/lexicoder_merged.csv")
+View(lexicoder_merged)
+```
+
+#### Exemple 1 - débat chambre des communes
+
+```{r}
+#créer une nouvelle colonne 'year' en extrayant l'année de la colonne 'speechdate'
+install.packages("dplyr")
+library(dplyr) 
+
+text_1 <- text_1 %>%
+  mutate(year = as.integer(substring(speechdate, 1, 4)))
+
+
+```
+
+```{r}
+## Sélectionner les colonnes pertinentes
+text_1_reduced <- text_1 %>%
+  select(speakername, year, speechtext, speakerparty)
+```
+
+```{r}
+##Regroupement des textes par année et parti politique
+# Collage des textes de chaque groupe en un seul texte et conversion en minuscules
+install.packages("stringr")
+library(stringr)
+
+grouped_texts <- text_1 %>%
+  group_by(year, speakerparty) %>%
+  summarise(text = str_c(tolower(speechtext), collapse = " ")) %>%
+  distinct() %>%
+  na.omit()
+```
+
+#### \# Transformation d'une base de données en dictionnaire
+
+```{r}
+install.packages("quanteda")
+library(quanteda)
+install.packages("dplyr")
+library(dplyr)
+
+
+lexicoder_merged <- read.csv("~/Documents/FAS 1001/fas_1001/_tp/_tp3/lexicoder_merged.csv")%>%
+rename(language = motAnglais) %>%
+  select(language, categorie) %>%
+  na.omit() %>%
+  filter(language != "x") %>%
+  unstack(., form = language ~ categorie) %>%
+  dictionary() 
+```
+
+#### - Analyse du dictionnaire pour l'exemple 1 
+
+```{r}
+
+run_dictionary <- function(data, text, dictionary) {
+  tictoc::tic()
+  if ( is.data.frame(data) != "TRUE") {
+    stop(crayon::yellow('the argument "data" needs to be a dataframe'))
+  }
+  data <- data %>% dplyr::mutate(text = {{text}})
+  if ( is.character(data$text) != "TRUE") {
+    stop(crayon::yellow('The variable "text" needs to be a character vector'))
+  }
+  corpus <- quanteda::tokens(data$text)
+  if ( quanteda::is.dictionary(dictionary) != "TRUE") {
+    stop(crayon::yellow('Your "dictionary" needs to be in a dictionary format\n For more information:" https://quanteda.io/reference/dictionary.html'))
+  }
+  dfm    <- quanteda::dfm(quanteda::tokens_lookup(corpus, dictionary, nested_scope = "dictionary"))
+  message(crayon::green("100% expressions/words found"))
+  dataFinal   <- quanteda::convert(dfm, to = "data.frame")
+  tictoc::toc()
+  return(dataFinal)
+}
+
+```
+
+```{r}
+install.packages("tidyverse")
+library(tidyverse)
+
+text_1_clean_3 <- run_dictionary(data = text_1, text = "speechtext", dictionary = lexicoder_merged) %>%
+  bind_cols(text_1) %>%
+  select(-c(doc_id)) %>%
+  pivot_longer(!c(speechdate), names_to = "categorie", values_to="n") %>%
+  ungroup() 
+
+
+
+```
