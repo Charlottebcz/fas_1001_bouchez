@@ -1,0 +1,55 @@
+---
+title: "plan de recherche"
+format: html
+editor: visual
+---
+
+##### Presentation de la question de recherche
+
+L'avènement d'internet a permis une diffusion rapide de l'information par tous ceux disposant d'une connexion internet. L'une des conséquences les plus néfastes sont appelés les fakes news et constituent un enjeu majeur de préoccupation. Notre étude se penchera sur les fausses nouvelles à travers une perspective politique, les percevant comme un outil de manipulation utilisé par certaines élites politiques et économiques. Cette approche met en lumière la diffusion délibérée d'informations erronées, dans le but de tromper la population et d'engendrer un climat de méfiance généralisée. Ainsi, les populations des pays occidentaux se montrent sceptiques et critiques face aux médias traditionnels d'information.
+
+Mon projet de recherche se focalisera principalement sur les élections américaines de 2016.  En effet, de nombreuses personnes affirment encore aujourd'hui que sans la diffusion massive de fake news sur Hilary Clinton, Donald Trump n'aurait peut-être pas été élu vainqueur. L'étendu de notre recherche s'intéresse à l'influence deces campagnes de désinformation sur l'opinion publique.
+
+Après avoir mis en évidence le rôle potentiellement décisif des fake news dans l'issue des élections américaines de 2016, il devient impératif de se pencher sur les mécanismes sous-jacents à cette vague de désinformation. Parmi ces mécanismes, l'influence d'acteurs étrangers, et plus spécifiquement russe, émerge comme un facteur critique nécessitant une attention particulière. En effet, l'influence russe apparait comme un vecteur potentiellement significatif dans le paysage politique américain. En septembre 2016, Facebook avait déjà annoncé avoir identifiée 3000 publicités diffusées sur son site vues par 10 millions d'internautes américains dans le but de manipuler et de modifier l'opinion publique (Le monde, 2017).
+
+Notre projet de recherche vise donc à explorer, en plus de l'impact des fausses nouvelles en tant que telles, la dimension de l'influence étrangère en particulier russe, pour comprendre dans quelle mesure a-t-elle pu contribuer à modeler les perceptions et les comportements électoraux des Américains en 2016. Nous pouvons alors se demander comment les fakes news et l'influence russe ont-elles affecté les comportements électoraux lors des élections nord-américaines de 2016?  
+
+Les raisons motivant ma recherche :
+
+Les « fausses nouvelles » menacent l'intégrité du savoir et la souveraineté en matière d'information et de démocratie. Elles touchent de nombreux aspects de notre vie, y compris la dimension politique des changements climatiques, de la mondialisation, du féminisme, de la santé, de la science et bien d'autres préoccupations (Landy, 2018). Ce phénomène révèle d'une crise de confiance envers la politique qui se manifeste par une méfiance des dirigeants politiques, des institutions, des intellectuels et des médias de la part de la population.  Avec l'importante croissance des réseaux sociaux comme source d'information, la prévention des fake news et son contrôle sont nécessaire afin d'empêcher les internautes de modifier leurs croyances.
+
+J'ai choisi de me pencher en particulier sur l'étude de l'élection présidentielle de 2016 puisque c'est l'une des campagnes de désinformation les plus connues de l'ère moderne et celle qui a été le plus illustré par l'influence russe. En effet, cette campagne illustre que la désinformation peut être utilisée de manière stratégique pour influencer le résultat électoral. Elle soulève des questions importantes sur l'influence étrangère et la liberté d'expression.
+
+##### Données mobilisées :
+
+Afin de comprendre l'influence des fakes news russes sur l'opinion publique américaines, il est nécessaire de combiner des données observationnelles et des données de sondages.
+
+D'une part, pour mesurer les opinions et les croyances, il faudrait mobiliser des sondages concernant la fréquence à laquelle les électeurs rencontrent des fakes news. Pour analyser la perception des électeurs vis-à-vis des fakes news et leur capacité à différencier les vraies informations des fausses, il est essentiel d'intégrer des données relatives à la confiance accordée aux différents types de médias.
+
+Ainsi, d'autres sondages peuvent alors expliquer l'impact sur les décisions électorales. Il sera important de déterminer grâce à des enquêtes, si les électeurs se rappellent avoir été influencés par des informations ultérieurement démenties comme fausses et s'ils pensaient qu'elles appartenaient à des comptes russes.
+
+D'autres part, il me semble nécessaires de collecter des données observationnelles concernant les taux de participation et les taux d'exposition des électeurs aux différents types de médias durant la période électorale. Il faudrait aussi collectez des données sur les mentions des fake news et des campagnes de désinformation russes dans les conversations sur les plateformes de réseaux sociaux (voir comment on peut faire pour en collecter ou trouver une alternative).
+
+##### Méthodes utilisées :
+
+Je vais utiliser la méthode de régression avec R pour analyser les relations entre l'exposition aux fake news, identifiée à travers des données observationnelles, et les modifications dans les opinions ou comportements électoraux, qui sont issues de sondages. Cette technique me permettra d'examiner comment l'exposition aux fausses informations peut influencer les décisions des électeurs et leurs perspectives politiques.
+
+Pour ce faire, il faudra procéder à un nettoyage des bases de données afin de garder uniquement les variables importantes et nécessaire pour notre analyse.
+
+Envisageant d'intégrer l'analyse de données textuelles dans mon étude, l'impact du concept de « fake news » sur le débat public est indéniable. Alors qu'en 2015, le terme était mentionné à peine 1 800 fois dans les médias anglophones, une augmentation spectaculaire a été mentionnée par la suite. D'ici 2018, le volume de mentions avait grimpé à environ 100 000, soulignant ainsi l'ascension croissante de ce phénomène (Internet Economy Foundation). Pour ce faire, il faudrait mobiliser des ressources tel que des débats, des articles de presses, des commentaires liés au fake news et aux élections. Ensuite, j'identifierai et visualiserai les mots ou phrases les plus fréquents pour comprendre les thèmes dominants (a l'aide de dictionnaire fait par moi-même ou directement sur R).
+
+##### Bibliographie
+
+« Interférence russe dans l'élection américaine : Facebook, Google et Twitter entendus au Sénat ». Le Monde.fr, 31 octobre 2017. 
+
+[https://www.lemonde.fr/pixels/article/2017/10/31/interference-russe-dans-l-election-americaine-facebook-google-et- twitter-entendus-au-senat_5208121_4408996.html](https://www.lemonde.fr/pixels/article/2017/10/31/interference-russe-dans-l-election-americaine-facebook-google-et-%20twitter-entendus-au-senat_5208121_4408996.html).
+
+Bovet, Alexandre et Hernán A. Makse. « Influence des fausses nouvelles sur Twitter lors de l'élection présidentielle américaine de 2016 ». Communications sur la nature, vol. 10, n o 1, janvier 2019, p. 7. 
+
+<https://www.nature.com/articles/s41467-018-07761-2>
+
+Landry, Normand. 2018. « Alphabétiser à l'actualité : examen des réponses éducatives aux fausses nouvelles. » Dans Les fausses nouvelles, nouveaux visages, nouveaux défis, sous la direction de Florian Sauvageau, Simon Thibault et Pierre Trudel, 173-94. Québec : PUL.
+
+« Démocratie et désinformation sur internet ». Internet Economy Foundation (IEF), 2019.
+
+https://www.ie.foundation/content/4-publications/digitaldesinformation_ie.f-rb-fr.pdf\
