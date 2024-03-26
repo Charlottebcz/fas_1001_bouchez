@@ -1,0 +1,94 @@
+---
+title: "tp4"
+format: html
+editor: visual
+---
+
+## TP4 : SCRAPER LES DONNÉES
+
+```{r}
+## création de packages 
+
+install.packages("tidyverse")
+suppressMessages(library(tidyverse))
+library(lubridate) # Package pour gérer des données temporelles
+install.packages("rvest")
+library(rvest) # Package pour le scraping
+```
+
+```{r}
+
+Ma question de recherche est la suivante : Comment les fakes news et l influence russe ont elles affecté les comportements electoraux lors des élections nord américaines ?
+  
+Pour la premiere étape j ai recolter les données sur Wikipédia des différents sondages sur l election presidentielle américaine de 2016. 
+Voici ce que j ai scrapper : 
+
+url <- "https://fr.wikipedia.org/wiki/Liste_de_sondages_sur_l%27%C3%A9lection_pr%C3%A9sidentielle_am%C3%A9ricaine_de_2016"
+data <- read_html(url)
+
+```
+
+```{r}
+tables <- data %>%
+  html_elements("table") 
+
+```
+
+```{r}
+first_table <- tables %>%
+  pluck(1) %>%
+  html_table(fill = TRUE)
+```
+
+```{r}
+## formater les données + nettoyage 
+
+library(dplyr)
+
+first_table <- first_table %>%
+  select(-`Marge d'erreur`)
+
+
+```
+
+```{r}
+#ajouter juste l'année 2016 
+first_table <- first_table %>%
+  mutate(annee = 2016)
+
+# transformer le data frame en format long 
+first_table_long <- pivot_longer(first_table, 
+                        cols = c('Hillary Clinton', 'Donald Trump'), 
+                        names_to = "Candidate", 
+                        values_to = "Percentage")
+```
+
+```{r}
+##visualisation de la base de donnée 
+glimpse(first_table)
+```
+
+```{r}
+##analyse 
+install.packages("ggplot2")
+library(ggplot2)
+
+library(tidyr)
+
+```
+
+```{r}
+#création du graphique 
+ggplot(first_table_long, aes(x = Candidate, y = Percentage, fill = Candidate)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(x = "Candidat", y = "Pourcentage de votes (%)", title = "Pourcentage de votes par candidat") +
+  theme_minimal()
+
+```
+
+```{r}
+J ai produit un diagramme en barre empilé. Chaque barre représente le pourcentage cumulé des votes obtenus par le candidat dans plusieurs sondages avec chaque segment de la barre représentant un sondage individuel.   
+
+Sur ce graphique on voit globalement les extremes des poucentages ou les opinions de vote sont plus élevé pour Hillary Clinton sur les sondages presents. Trump a eu le pourcentage le plus bas selon une certaine source (33%) et Clinton a eu le poucentage le plus élevé (54%). 
+En regardant la hauteur totale des barres empilées pour chaque candidat, on peut tenté de comparer leur popularité relative.
+```
