@@ -5,12 +5,289 @@ format: pdf
 editor: visual
 ---
 
-# Introduction
+## Introduction :
 
-## Problématique de recherche
+1\. [Présentation de la question de recherche]{.underline}
 
-## Données et méthodes
+L'avènement d'Internet a permis une diffusion rapide de l'information par tous ceux disposant d'une connexion internet. L'une des conséquences les plus néfastes est appelée les fake news et constituent un enjeu majeur de préoccupation. En effet, elles permettent une diffusion délibérée d'information erronée, dans le but de tromper la population et d'engendrer un climat de méfiance généralisée. Au États-Unis c'est 38,2 % des Américains qui ont accidentellement partagé des fausses nouvelles, et 62% pensent que ces dernières sèment la confusion (Statista). En diffusant quotidiennement des millions de mensonges, les fake news affectent sérieusement l'exercice de la démocratie. Effectivement, les fausses nouvelles proviennent de diverses sources. Parmi elles, on trouve les utilisateurs authentiques sur les réseaux sociaux, qui partagent parfois des informations sans en vérifier l'exactitude. Les « bots », ou programmes automatisés, jouent également un rôle important dans la diffusion de ces fausses nouvelles en amplifiant leur portée. En outre, certains sites web sont spécifiquement créés pour propager ces fausses informations, souvent dans le but de générer des revenus publicitaires ou d'influencer l'opinion publique. En effet, elles ont gagné en popularité des 2016 lors des élections américaines (Catherine, Beauvais, 2022). La circulation de fausses nouvelles lors de l'élection de Donald Trump a été à cœur de la polémique, et de nombreux chercheurs se sont demandé si les fake news ont permis la victoire de Trump (Huffpost).
 
-## Résultats
+### Problématique de recherche :
 
-# Conclusion
+Notre projet de recherche vise donc à explorer, l'influence des médias sur le comportement électoral lors des élections présidentielles de 2016. Cela nous conduit à examiner dans quelle mesure la fréquence d'utilisation des réseaux sociaux peut elle affecter les décisions de vote ?
+
+Notre hypothèse est que l'exposition aux fausses nouvelles sur les réseaux sociaux pourrait inciter les utilisateurs à voter pour Donald Trump.
+
+Aborder ce sujet aide à "pré-démystifier" les utilisateurs des réseaux sociaux et les incite à réfléchir sur l'exactitude des informations avant de les partager. Cette démarche les sensibilise et les encourage à adopter une attitude vigilante et critique vis-à-vis des informations qu'ils reçoivent ou diffusent, jouant ainsi un rôle actif dans la lutte contre la propagation des fausses nouvelles (MediaSmart, 2022).
+
+## Présentations des données utilisées :
+
+Pour cette étude, j'utilise la base de données de L'ANES de 2016 et des données de sondage qui proviennent du CIRCLE.
+
+D'une part, pour le modèle de régression : Afin de comprendre la fréquence des réseaux sociaux sur le comportement de vote, j'ai extrait des données issues de l'American National Study (ANES) de 2016. J'ai donc employé le codebook de l'ANES pour examiner trois variables : V161495 qui représente la fréquence d'utilisation des réseaux sociaux, V161267 qui indique l'âge des participants, et V162034a qui mesure le nombre de votes obtenus par divers candidats lors d'une élection présidentielle, collectés en personne (face-à-face, FTF) et en ligne, incluant Hillary Clinton et Donald Trump.
+
+La première variable présente la question « Durant une semaine typique, combien de jours utilisez-vous les réseaux sociaux comme Twitter ou Facebook ». Les réponses sont réparties en fréquences non pondérées et pondérées, et divisées en deux modes de réponse : FTF (Face-To-Face) et Web. Les options de réponse vont de "0. Aucun" à "7. Sept jours", avec deux autres catégories pour les entretiens interrompus et les refus. Ainsi, la majorité des répondants soit 41,3 % des répondants utilisent les réseaux sociaux tous les jours pour se renseigner sur les réseaux sociaux.
+
+La deuxième variable V162034a repose sur les votes pré-élections lors des présidentielles. Les réponses comprennent des options pour Hillary Clinton, Donald Trump, Gary Johnson, Jill Stein, un autre candidat spécifié, ou aucune de ces réponses.
+
+Et enfin, la variable de contrôle V161267 indique « l'âge du répondant ». Les réponses sont encore une fois divisées en deux modes de réponse FTF et Web indiquant des ages de 31 a 68 ans.
+
+D'autre part, pour étudier l'interaction entre l'utilisation des médias sociaux et les jeunes électeurs pro-Trump, nous avons extrait des données de sondage de sortie réalisé par Edison Research pour le National Election Pool et analysé par Circle (Center for Information and Research on Civic Learning and Engagement). Ce centre de recherche indépendant analyse l'engagement civique des jeunes Américains, en étudiant leur participation politique et leur activisme.
+
+Premièrement, les données comprennent les résultats des votes selon les catégories d'âge pour les élections présidentielles de 2016. Ces informations permettent de comprendre les comportements de vote selon les tranches d'âge.
+
+Ensuite, nous faisons fais un focus particulier sur le score des jeunes électeurs lors des élections de 2016 en fonction de leur groupe ethnique. Il y aura ainsi 3 catégories telles que "White", "African American", "Latino". Nous avons initialement extrait les données issues d'un sondage réalisé par Circle et les avons compilées dans un fichier Excel. Cette segmentation aide à examiner les tendances de vote spécifiques au sein du groupe des jeunes électeurs, en explorant l'influence de la race sur le soutien de Trump.
+
+Pour approfondir notre analyse, nous avons extrait des données spécifiques à l'utilisation des réseaux sociaux par les jeunes électeurs, fournies par le sondage Circle. Ces données détaillent les actions telles que "partager une publication" (share a post) et "soumettre un contenu" (submit a post), et sont réparties selon différents groupes ethniques. Cette approche nous permet d'examiner comment l'engagement sur les réseaux sociaux varie parmi les jeunes électeurs de diverses origines ethniques. Nous avons distingué quatre groupes ethniques principaux dans notre étude : les individus se déclarant comme "White" , "Black" , "Asian" et "Latino".
+
+Ces données sont essentielles puisque les jeunes électeurs représentent une partie significative et influente dans l'electorat. En incluant des variables tels que les groupes ethiques, l'étude peut découvrir des nuances importantes dans le comportement électoral et l'utilisation des médias sociaux. L'analyse plus détaillée sur l'engagement des médias sociaux par actions spécifiques offre un aperçu de la manière dont les jeunes électeurs interagissent avec le contenu politique, ce qui est essentiel pour comprendre leur influence et leur mobilisation.
+
+## Méthodes mobilisées :
+
+##### Transformation pour l'analyse de la régression linéaire
+
+D'une part pour examiner la relation entre la fréquence d'utilisation des réseaux sociaux et le vote pour Trump (vote_trump) en contrôlant pour l'âge, j'applique une méthode statistique, plus précisément l'analyse de régression linéaire. J'effectue cette analyse en utilisant la fonction lm(). L'objectif est de déterminer comment la fréquence hebdomadaire d'utilisation des réseaux sociaux (freq_week_social) et l'âge des répondants (âge) peuvent influencer le fait de voter pour Trump. Ces analyses sont basées sur le jeu de données de la série temporelle de l'American National Election Studies de 2016 (anes_timeseries_2016).
+
+Dans cette section, nous détaillons les procédures de transformation des données utilisées pour préparer l'ensemble de données à l'analyse statistique. Ces transformations ont été implémentées en utilisant R et le package **`dplyr`**, un outil puissant et flexible pour la manipulation de données en R.
+
+Pour focaliser l'analyse sur les aspects les plus pertinents de l'étude, nous avons commencé par sélectionner les variables clés à partir de notre dataset. À l'aide de la fonction **`select()`** de **`dplyr`**, nous avons extrait les variables suivantes :
+
+**V161495** : Indicateur de l'engagement sur les réseaux sociaux.
+
+**V161267** : Âge du répondant.
+
+**V162034a** : Choix de candidat lors de l'élection présidentielle
+
+Les données ont ensuite été filtrées pour exclure les réponses non valides. En utilisant la fonction **`filter()`**, nous avons éliminé les entrées où les variables **V161495** et **V161267** contenaient des valeurs négatives, correspondant à des réponses 'Non répondus' ou 'Refus de répondre'.
+
+L'étape finale de la préparation des données a impliqué la création d'une nouvelle variable dichotomique, **`vote_trump`**, qui indique si le répondant a voté pour Donald Trump. Cette variable a été générée par la fonction **`mutate()`** combinée avec **`case_when()`**. Les règles de codification étaient les suivantes :
+
+-   Les répondants qui ont voté pour Hillary Clinton, Gary Johnson, ou Jill Stein (codes 1, 3, 4, respectivement) ont été codés **`0`**.
+
+-   Les répondants qui ont voté pour Donald Trump (code 2) ont été codés **`1`**
+
+Enfin nous avons renommé la variable "V161267" en "`age`" et "V161495" en "`freq_week_social`"
+
+##### Transformation pour les analyses visuelles :
+
+Notre étude sur le comportement électoral lors des élections présidentielles de 2016 comprend trois analyses distinctes, chacune explorant différentes dimensions du comportement des électeurs : par tranche d'âge, par appartenance ethnique, et par utilisation des réseaux sociaux selon l'ethnie.
+
+Afin de rendre les données comparables et de faciliter leur visualisation, nous avons transformé les data frames du format large au format long, en utilisant la fonction **`pivot_longer()`** du package **`tidyr.`**
+
+Pour chaque visualisation, nous avons utilisé **`ggplot2`** pour générer des graphiques à barres grace a la fonction `geom_bar`, permettant une comparaison visuelle intuitive des données. Pour améliorer la lisibilité de nos graphiques, nous avons ajouté des étiquettes indiquant les pourcentages directement sur chaque barre en utilisant la fonction **`geom_text()`** de **`ggplot2.`**
+
+## Analyse de données :
+
+```{r}
+##Regression linéaire 
+
+linear_model <- lm(vote_trump ~ freq_week_social + age, 
+                   data = anes_timeseries_2016)
+
+summary(linear_model)
+
+
+```
+
+### Résultats
+
+Le coefficient de freq_week_social est de 0.0039 avec une valeur-p (p-value) de 0.257. Cela signifie que chaque augmentation d'une unité dans la fréquence d'utilisation hebdomadaire des réseaux sociaux est associée à une augmentation de 0.0039 dans la probabilité de voter pour Trump, mais cette association n'est pas statistiquement significative (p \> 0.05).
+
+Le coefficient de "age" est de 0.0044 avec une valeur-p très faible (2.03e-12), ce qui indique que l'âge a une association positive significative avec la probabilité de voter pour Trump. Pour chaque année supplémentaire d'âge, la probabilité de voter pour Trump augmente de 0.0044, et cette relation est statistiquement significative.
+
+Nous réfutons alors l'hypothèse qu'il y aurait une relation entre la fréquence d'utilisation des réseaux sociaux et le vote pour Donald Trump. Mais l'âge est un facteur explicatif dans le fait de voter Trump (voir graphique 1 en annexe)
+
+Cependant, cette absence de corrélation directe ne diminue pas l'intérêt de l'interaction entre les jeunes électeurs et les plateformes numériques, surtout considérant leur consommation élevée de médias sociaux. Cette observation nous conduit à explorer plus en détail comment les jeunes électeurs, particulièrement actifs sur les réseaux sociaux, pourraient être influencés par d'autres aspects de l'environnement numérique, comme la propagation de fausses nouvelles.
+
+En effet, étant donné la prévalence élevée de l'utilisation des réseaux sociaux parmi les jeunes de 18 à 29 ans et leur moindre tendance à voter pour Trump comparativement aux électeurs plus âgés, il devient pertinent d'examiner leur exposition aux campagnes d'information ou de désinformation sur ces plateformes.
+
+Nos observations dans le graphique 2 montrent une disparité notable dans le comportement de vote selon l'ethnicité : parmi les jeunes, 43% des blancs ont voté pour Trump, un chiffre significativement supérieur aux 9% observés chez les jeunes noirs.
+
+Le graphique 3 enrichit cette analyse en révélant que les jeunes électeurs blancs, qui constituent la majorité des supporters de Trump dans cette tranche d'âge, sont également les moins actifs sur les réseaux sociaux, avec seulement 21% d'entre eux partageant ou soumettant du contenu, contre 34% pour les jeunes noirs. Cette moindre activité des jeunes blancs supporters de Trump sur les réseaux sociaux pourrait expliquer la non-significativité de l'association entre la fréquence d'utilisation des réseaux sociaux et le vote pour Trump. En effet, si les électeurs les plus susceptibles de voter pour Trump sont également moins enclins à utiliser activement les réseaux sociaux et donc a être moins exposé a l'effet des fake news, cela pourrait atténuer l'impact perçu des réseaux sociaux sur leur décision de vote.
+
+## Conclusion
+
+Cette étude a examiné les comportements de vote des jeunes électeurs lors des élections présidentielles de 2016, en se concentrant particulièrement sur l'influence des variables démographiques et de l'utilisation des réseaux sociaux. Les résultats révèlent que l'âge est un déterminant significatif du vote pour Donald Trump, avec une probabilité accrue de voter pour lui à mesure que l'âge augmente. Cette relation statistiquement significative souligne l'importance de l'âge comme facteur prédictif du comportement électoral, contrairement à l'utilisation des réseaux sociaux, qui ne montre pas de corrélation significative.
+
+Nos constatons aussi que dans l'electorat des jeunes ce sont les personnes blanches qui ont été les plus susceptibles de voter pour le candidats Républicains indiquant des dynamiques ethniques distinctes dans le comportement de vote. Parallèlement, malgré une prévalence élevée de l'utilisation des réseaux sociaux parmi les jeunes, cette activité n'a pas été associée de manière significative à leur décision de vote. Cela suggère que, dans le contexte de 2016, les réseaux sociaux n'ont peut-être pas joué un rôle aussi critique dans la formation des décisions politiques des jeunes.
+
+Notre étude ne permet donc pas de tirer des conclusions sur l'atteinte de la désinformation chez les jeunes electeurs et leur décison de vote.
+
+## Annexe :
+
+```{r}
+r}
+## installation des packages
+library(haven)
+
+library(dplyr)
+
+library(tidyverse)
+
+
+library(tidyr)
+
+```
+
+```{r}
+##installation de la banque de donnée de l'ANES 
+
+anes_timeseries_2016 <- read_sav("~/Downloads/anes_timeseries_2016_sav/anes_timeseries_2016.sav") 
+View(anes_timeseries_2016)
+
+## Nettoyage de données pour la préparation a la régression linéaire 
+
+anes_timeseries_2016 <- anes_timeseries_2016 |> 
+  select(V161495, V162034a, V161267) |> 
+  filter(!V161267 %in% c(-9), 
+         !V161495 %in% c(-9, -5)) |> 
+  mutate(vote_trump = case_when(V162034a %in% c(1,3,4) ~ 0, V162034a == 2 ~ 1),
+         age = V161267) |> 
+  rename(freq_week_social = V161495)
+
+```
+
+```{r}
+##Importation de la base de donnée de sondage concernant la variable explicative "age"
+
+library(readr)
+age_vote <- read.csv("~/Documents/FAS 1001/fas_1001_bouchez/age_vote.csv",sep = ";", stringsAsFactors = FALSE)
+View(age_vote)
+```
+
+```{r}
+## Création d'un data frame 
+age_vote <- data.frame(
+  Tranche_Age = c("18-29 ans", "30-44 ans", "45-64 ans", "65 et plus"),
+  Votes_Democrates = c(55, 50, 44, 45),
+  Votes_Republicains = c(37, 42, 53, 53)
+)
+
+##passage format long 
+age_vote_data_long <- pivot_longer(age_vote, 
+                                   cols = c('Votes_Democrates', 'Votes_Republicains'), 
+                                   names_to = 'Party', 
+                                   values_to = 'Percentage')
+```
+
+```{r}
+## Création du graphique 1 pour visualiser la variable explicative de l'âge
+
+p <- ggplot(age_vote_data_long, aes(x=Tranche_Age, y=Percentage, fill=Party)) +
+  geom_bar(stat='identity', position='dodge') +
+   geom_text(aes(label = paste(Percentage, "%")), 
+            position = position_dodge(width = 0.9),
+            vjust = -0.25,          
+            color = "black", size = 3) +
+    scale_fill_manual(values=c('Votes_Democrates'='blue', 'Votes_Republicains'='red')) +
+    labs(title='Choix de votes par âge lors des élections de 2016', x = "", y = "", fill = "") +
+    theme_minimal() +
+  theme(plot.title = element_text(size = 7),
+       axis.text.x = element_text(size = 8), 
+       plot.background = element_rect(fill = "white"),
+       panel.background = element_rect(fill = "white", color = "white", size = 0.5, linetype = "solid"),
+        panel.grid.major = element_line(size = 0.5, linetype = "solid", color = "white"),
+        panel.grid.minor = element_line(size = 0.25, linetype = "solid", color = "white"))
+
+ggsave("graphique1.png", plot = p)
+print(p)
+
+```
+
+```{r}
+##Importation des données du vote des jeunes electeurs en fonction de leur race 
+
+library(readr)
+votes_jeunes <- read.csv("~/Documents/FAS 1001/fas_1001_bouchez/_travail_session/votes_jeunes.csv" ,sep = ";", stringsAsFactors = FALSE)
+View(votes_jeunes)
+```
+
+```{r}
+##Creation d'un data frame 
+votes_jeunes<- data.frame(
+  Ethnie = c("White", "African American", "Latino"),
+  Democrate = c(43, 83, 70),
+  Republicain = c(48, 9, 24)
+)
+##Passage d'un format large a long 
+
+votes_jeunes_long <- pivot_longer(votes_jeunes, 
+                                cols = c(Democrate, Republicain), 
+                                names_to = "Party", 
+                                values_to = "Votes")
+```
+
+```{r}
+## Création du graphique 2 
+library(ggplot2)
+
+p <- ggplot(votes_jeunes_long, aes(x = Ethnie, y = Votes, fill = Party)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  geom_text(aes(label = paste(Votes, "%")), 
+            position = position_dodge(width = 0.9),
+            vjust = -0.25,          
+            color = "black", size = 3) +
+   scale_fill_manual(values=c('Democrate'='blue', 'Republicain'='red')) +
+  labs(title='Choix de vote chez les jeunes électeurs en fonction de leur groupe ethnique', x = "", y = "", fill = "") +
+  theme_minimal() +
+theme(plot.title = element_text(size = 10),
+       axis.text.x = element_text(size = 7), 
+       plot.background = element_rect(fill = "white"),
+       panel.background = element_rect(fill = "white", color = "white", size = 0.5, linetype = "solid"),
+        panel.grid.major = element_line(size = 0.5, linetype = "solid", color = "white"),
+        panel.grid.minor = element_line(size = 0.25, linetype = "solid", color = "white"))
+      
+ggsave("graphique2.png", plot = p)
+print(p)
+
+```
+
+```{r}
+##Importation des données sur l'utilisation des réseaux sociaux chez les jeunes en fonction de leur groupe ethnique. 
+
+library(readr)
+data_reseaux <- read.csv("~/Documents/FAS 1001/fas_1001_bouchez/_travail_session/data_reseaux.csv" ,sep = ";", stringsAsFactors = FALSE)
+View(data_reseaux)
+
+
+## Creation d'Un data frame 
+
+data_reseaux <- data.frame(
+  Ethnicity = c("White", "Black", "Asian", "Latino"),
+  Shared_a_post = c(21.0, 28.8, 14.0, 26.0),
+  Submitted_content = c(21.0, 34.0, 20.6, 32.2)
+)
+
+##Passage a un format long 
+
+data_reseaux_long <- pivot_longer(data_reseaux, 
+                                cols = c(Shared_a_post, Submitted_content), 
+                                names_to = "Utility", 
+                                values_to = "Percentages")
+
+
+
+```
+
+```{r}
+##Création du graphique 3 entre utilisation des réseaux et groupe ethnique 
+
+ggplot(data_reseaux_long, aes(x = Ethnicity, y = Percentages, fill = Utility)) +
+  geom_bar(stat = "identity", position = "stack", width = 0.5) +  
+  geom_text(aes(label = paste0(Percentages, "%")), 
+            position = position_stack(vjust = 0.5), 
+            color = "white", size = 3) +
+  scale_y_continuous(limits = c(0, 100)) +  
+  scale_fill_brewer(palette = "Set2") +
+  labs(title = "Pourcentage des jeunes électeurs par groupe ethnique qui ont déclaré partager un post et soumis un contenu",
+       x = "",
+       y = "",
+       fill = "") +
+  theme_minimal() +
+theme(plot.title = element_text(size = 10),
+       axis.text.x = element_text(size = 7), 
+       plot.background = element_rect(fill = "white"),
+       panel.background = element_rect(fill = "white", color = "white", size = 0.5, linetype = "solid"),
+        panel.grid.major = element_line(size = 0.5, linetype = "solid", color = "white"),
+        panel.grid.minor = element_line(size = 0.25, linetype = "solid", color = "white"))
+
+```
