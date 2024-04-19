@@ -96,7 +96,7 @@ Le coefficient de "age" est de 0.0044 avec une valeur-p très faible (2.03e-12),
 
 Nous réfutons alors l'hypothèse qu'il y aurait une relation entre la fréquence d'utilisation des réseaux sociaux et le vote pour Donald Trump. Mais l'âge est un facteur explicatif dans le fait de voter Trump (voir graphique 1 en annexe)
 
-Cependant, cette absence de corrélation directe ne diminue pas l'intérêt de l'interaction entre les jeunes électeurs et les plateformes numériques, surtout considérant leur consommation élevée de médias sociaux. Cette observation nous conduit à explorer plus en détail comment les jeunes électeurs, particulièrement actifs sur les réseaux sociaux, pourraient être influencés par d'autres aspects de l'environnement numérique, comme la propagation de fausses nouvelles.
+Cependant, cette absence de corrélation directe ne diminue pas l'intérêt de l'interaction entre les jeunes électeurs et les plateformes numériques, surtout considérant leur consommation élevée de médias sociaux selon le Pew Research Center. Cette observation nous conduit à explorer plus en détail comment les jeunes électeurs, particulièrement actifs sur les réseaux sociaux, pourraient être influencés par d'autres aspects de l'environnement numérique, comme la propagation de fausses nouvelles.
 
 En effet, étant donné la prévalence élevée de l'utilisation des réseaux sociaux parmi les jeunes de 18 à 29 ans et leur moindre tendance à voter pour Trump comparativement aux électeurs plus âgés, il devient pertinent d'examiner leur exposition aux campagnes d'information ou de désinformation sur ces plateformes.
 
@@ -112,7 +112,7 @@ Nos constatons aussi que dans l'electorat des jeunes ce sont les personnes blanc
 
 Notre étude ne permet donc pas de tirer des conclusions sur l'atteinte de la désinformation chez les jeunes electeurs et leur décison de vote.
 
-## Annexe :
+## Annexe
 
 ```{r}
 r}
@@ -258,6 +258,7 @@ data_reseaux <- data.frame(
 )
 
 ##Passage a un format long 
+library(tidyr)
 
 data_reseaux_long <- pivot_longer(data_reseaux, 
                                 cols = c(Shared_a_post, Submitted_content), 
@@ -270,8 +271,9 @@ data_reseaux_long <- pivot_longer(data_reseaux,
 
 ```{r}
 ##Création du graphique 3 entre utilisation des réseaux et groupe ethnique 
+library(ggplot2)
 
-ggplot(data_reseaux_long, aes(x = Ethnicity, y = Percentages, fill = Utility)) +
+p <- ggplot(data_reseaux_long, aes(x = Ethnicity, y = Percentages, fill = Utility)) +
   geom_bar(stat = "identity", position = "stack", width = 0.5) +  
   geom_text(aes(label = paste0(Percentages, "%")), 
             position = position_stack(vjust = 0.5), 
@@ -290,4 +292,27 @@ theme(plot.title = element_text(size = 10),
         panel.grid.major = element_line(size = 0.5, linetype = "solid", color = "white"),
         panel.grid.minor = element_line(size = 0.25, linetype = "solid", color = "white"))
 
+ggsave("graphique3.png", plot = p)
+print(p)
+
 ```
+
+#### 
+
+## Bibliographie 
+
+Beauvais, Catherine. « Pourquoi croyons-nous aux fake news ? » *Revue du Rhumatisme (Ed. Française : 1993)* , vol. 89, n ^o^ 6, décembre 2022, p. 555‑61. *PubMed Central* , https://doi.org/10.1016/j.rhum.2022.09.013.
+
+Duggan, Shannon Greenwood, Andrew Perrin et Maeve. « Mise à jour des médias sociaux 2016 ». *Pew Research Center* , 11 novembre 2016, https://www.pewresearch.org/internet/2016/11/11/social-media-update-2016/.
+
+Landry, Normand. 2018. « Alphabétiser à l\'actualité : examen des réponses éducatives aux fausses nouvelles. » Dans Les fausses nouvelles, nouveaux visages, nouveaux défis, sous la direction de Florian Sauvageau, Simon Thibault et Pierre Trudel, 173-94. Québec : PUL.
+
+« À propos de CERCLE ». *CERCLE* , https://circle.tufts.edu/about.
+
+*ANES \| Études électorales nationales américaines* , https://electionstudies.org/
+
+« Ces chercheurs ont analysé l'impact des « fausses nouvelles » sur l'élection de Trump ». *Le HuffPost* , 19 janvier 2017, https://www.huffingtonpost.fr/science/article/ces-chercheurs-ont-analyse-l-impact-des-fake-news-sur-l-election-de-donald-trump_92635 .html.
+
+*HabiloMédias* . https://mediasmarts.ca/search?search_api_fulltext=faake+news.
+
+Sujet : Fausses nouvelles aux États-Unis » *Statista* , https://www.statista.com/topics/3251/fake-news/.
